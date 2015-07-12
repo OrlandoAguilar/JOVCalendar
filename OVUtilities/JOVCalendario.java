@@ -21,7 +21,8 @@ import java.awt.event.*;
 import java.awt.*;
 import java.text.*;
 
-class JOVCalendario implements ActionListener{
+
+public class JOVCalendario implements ActionListener{
      int anio;
      int mes;
      int dia;
@@ -183,8 +184,10 @@ class JOVCalendario implements ActionListener{
     for (;z<42;z++)
          mtab.cambia("",z);
   }
-
-  public Date getFecha(){
+	public void RestartCalendar(){
+		mtab.setValSel(null);
+	}
+  public Date getDate(){
     try{
     dia=Integer.parseInt(mtab.getValSel().toString());
     if (dia>calendar.getActualMaximum(Calendar.DAY_OF_MONTH)+calendar.get(Calendar.DAY_OF_WEEK)-1)
@@ -201,19 +204,23 @@ class JOVCalendario implements ActionListener{
            if(((String)boton.getText()).equals("^") ){
                anio++;
                JTFAnio.setText(""+anio);
+			   RestartCalendar();
             }else if (((String)boton.getText()).equals("v") ){
                anio--;
                JTFAnio.setText(""+anio);
+			   RestartCalendar();
             }else if (((String)boton.getText()).equals(">") ){
                mes++;
                if (mes>12)
                   mes=1;
                jtx.setText(Meses[mes-1]);
+			   RestartCalendar();
             }else if (((String)boton.getText()).equals("<") ){
                mes--;
                if (mes<1)
                   mes=12;
                jtx.setText(Meses[mes-1]);
+			   RestartCalendar();
             } //else
       }else if (evento.getSource() instanceof JTextField){
           JTextField campo = (JTextField) evento.getSource();

@@ -25,23 +25,25 @@ import javax.swing.*;
 
 public class ModalCalendar extends JDialog {
     private JTextField textField;
-    JOVCalendario cal;
+    JOVCalendario calendar;
     Frame padre;
-
+	private static final long serialVersionUID = 7526472295622776147L;
+	
+	
     public ModalCalendar(Frame padree) {
       super(padree, true);
       padre=padree;
 
         //setTitle("Mete un dato");
         //setUndecorated(true);
-        cal = new JOVCalendario();
-        getContentPane().add(cal.GetPanel());
+        calendar = new JOVCalendario();
+        getContentPane().add(calendar.GetPanel());
         setSize(310,300);
         setLocationRelativeTo(padre);
         JButton bot=new JButton("Accept");
         bot.addActionListener(new ActionListener(){
           public void actionPerformed(ActionEvent evento){
-              if (Fecha()==null)    {
+              if (GetDate()==null)    {
 					javax.swing.JOptionPane.showMessageDialog(
 					padre,
 					"Choose the day");
@@ -50,30 +52,24 @@ public class ModalCalendar extends JDialog {
           }
         });
         getContentPane().add(bot,BorderLayout.SOUTH);
-//   getContentPane().setBorder(BorderFactory.createEtchedBorder());
-       // System.out.println(isFocusOwner());
-        /* this.addWindowFocusListener(new WindowFocusListener() {
-            public void windowGainedFocus(WindowEvent e){
-            }
-            public void windowLostFocus(WindowEvent e) {
-                setVisible(false);
-            }
-        }); */
 
     }
-       public void muestra(){
+       public void Show(){
          setLocationRelativeTo(padre);
          setVisible(true);
        }
 
-       public void muestra(int x, int y){
+       public void Show(int x, int y){
          setLocationRelativeTo(padre);
          setLocation(x,y);
          setVisible(true);
        }
 
-       public Date Fecha (){
-         return cal.getFecha();
+       public Date GetDate (){
+         return calendar.getDate();
        }
+	   public void RestartCalendar(){
+		   calendar.RestartCalendar();
+	   }
 
 }

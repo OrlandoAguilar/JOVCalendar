@@ -22,17 +22,18 @@ import java.text.*;
 import OVUtilities.ModalCalendar;
 
 class Example extends JFrame{
-public static ModalCalendar cal;
+public static ModalCalendar calendar;
     public static void main(String[] vr){
       Example mj= new Example();
         JButton bot=new JButton("Open Calendar");
-        Example.cal = new ModalCalendar(mj);
+        Example.calendar = new ModalCalendar(mj);
 
         bot.addActionListener(new ActionListener(){
           public void actionPerformed(ActionEvent evento){
           JButton botn=  (JButton) evento.getSource();
-              Example.cal.muestra();
-              System.out.println(Example.cal.Fecha());
+              Example.calendar.Show();
+              System.out.println(Example.calendar.GetDate());
+			  Example.calendar.RestartCalendar();
           }
         });
         Container conten= mj.getContentPane();

@@ -22,7 +22,7 @@ import java.awt.Point;
 import java.awt.event.*;
 
 
-class MJTable extends JTable{
+public class MJTable extends JTable{
 DefaultTableModel modelo = new DefaultTableModel();
      JScrollPane scroll;
      Point Punto;
@@ -103,15 +103,11 @@ DefaultTableModel modelo = new DefaultTableModel();
 
               return obSel;
        }
-       
-      /*  public boolean isCellSelected(int row, int col)
-        {
-          if (getVal(row,col).toString().isEmpty())
-          return false;
 
-          return true;
-          } */
-
+	   public void setValSel(Object val){
+		   obSel=val;
+	   }
+	   
 
        public void selecciona(int fila,int columna){
          filaM=fila;
